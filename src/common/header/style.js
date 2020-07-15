@@ -25,5 +25,21 @@ export const Nav = styled.div`
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  background: green;
+`
+
+export const NavItem = styled.div`
+  color: #333;
+  line-height: 56px;
+  font-size: 17px;
+  padding: 0 15px;
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+    color: #969696;
+  }
+  &.active {
+    color: #ea6f5a;
+  }
 `
