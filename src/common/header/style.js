@@ -43,3 +43,47 @@ export const NavItem = styled.div`
     color: #ea6f5a;
   }
 `
+
+export const Addition = styled.div`
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+`
+
+export const Button = styled.a` 
+  display: block;
+  float: left;
+  height: 40px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  line-height: 27px;
+  margin-top: 8px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 20px;
+  margin-right: 20px;
+  &.reg {
+    width: 80px;
+    color: #EA6F5A;
+    border: 1px solid #EA6F5A;
+  }
+  &.edit {
+    width: 100px;
+    background: #EA6F5A;
+    color: #fff;
+  }
+`
+
+export const Search = styled.input`
+  width: 240px;
+  height: 38px;
+  border: 1px solid #eee;
+  border-radius: 40px;
+  background: #eee;
+  padding: 0 40px 0 20px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  outline: none;
+  font-size： 14px;
+`
