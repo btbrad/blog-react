@@ -86,4 +86,8 @@ export const Search = styled.input`
   box-sizing: border-box;
   outline: none;
   font-size： 14px;
+  transition: all 1s;
+  &:focus {
+    width: 320px;
+  }
 `

@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button, Search } from './style'
 import Icon from '../../components/SvgIcon'
+import bind from './transition'
 
 const style = {
   position: 'relative',
-  left: '-30px'
+  left: '-30px',
+  width: '22px',
+  height: '22px',
 }
 
 class Header extends Component {
+
+  componentDidMount() {
+    bind()
+  }
+
   render() {
     return (
       <HeaderWrapper>
@@ -15,8 +23,8 @@ class Header extends Component {
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
-          <Search placeholder='搜索'></Search>
-            <span style={style}>
+          <Search id="search-box" placeholder='搜索'></Search>
+            <span style={style} className="search-icon">
               <Icon name='search' />
             </span>
           <NavItem className='right'>
