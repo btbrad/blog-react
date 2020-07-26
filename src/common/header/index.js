@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
-import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button, Search } from './style'
+import {
+  HeaderWrapper,
+  Logo,
+  Nav,
+  NavItem,
+  Addition,
+  Button,
+  Search,
+} from './style'
+// import { CSSTransition } from 'react-transition-group'
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 
@@ -11,7 +20,6 @@ const style = {
 }
 
 class Header extends Component {
-
   componentDidMount() {
     bind()
   }
@@ -23,10 +31,10 @@ class Header extends Component {
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
-          <Search id="search-box" placeholder='搜索'></Search>
-            <span style={style} className="search-icon">
-              <Icon name='search' />
-            </span>
+          <Search id='search-box' placeholder='搜索'></Search>
+          <span style={style} className='search-icon'>
+            <Icon name='search' />
+          </span>
           <NavItem className='right'>
             <Icon name='Aa' />
           </NavItem>

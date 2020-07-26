@@ -51,7 +51,7 @@ export const Addition = styled.div`
   top: 0;
 `
 
-export const Button = styled.a` 
+export const Button = styled.a`
   display: block;
   float: left;
   height: 40px;
@@ -65,12 +65,12 @@ export const Button = styled.a`
   margin-right: 20px;
   &.reg {
     width: 80px;
-    color: #EA6F5A;
-    border: 1px solid #EA6F5A;
+    color: #ea6f5a;
+    border: 1px solid #ea6f5a;
   }
   &.edit {
     width: 100px;
-    background: #EA6F5A;
+    background: #ea6f5a;
     color: #fff;
   }
 `
@@ -87,6 +87,7 @@ export const Search = styled.input`
   outline: none;
   font-size： 14px;
   transition: all 1s;
+  color: #777;
   &:focus {
     width: 320px;
   }
