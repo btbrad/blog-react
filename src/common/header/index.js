@@ -20,8 +20,29 @@ const style = {
 }
 
 class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      focused: false,
+    }
+  }
+
   componentDidMount() {
     bind()
+  }
+
+  handleFocus = () => {
+    this.setState({
+      focused: true,
+    })
+    console.log(this.state.focused)
+  }
+
+  handleBlur = () => {
+    this.setState({
+      focused: false,
+    })
+    console.log(this.state.focused)
   }
 
   render() {
@@ -31,7 +52,11 @@ class Header extends Component {
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
-          <Search id='search-box' placeholder='搜索'></Search>
+          <Search
+            id='search-box'
+            placeholder='搜索'
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}></Search>
           <span style={style} className='search-icon'>
             <Icon name='search' />
           </span>

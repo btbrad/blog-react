@@ -7,13 +7,10 @@ function bindListener() {
   })
 
   searchBox.addEventListener('transitionstart', () => {
-    console.log('动画开始')
-    console.log(searchBox.getBoundingClientRect().width)
+    // console.log(searchBox.getBoundingClientRect().width)
   })
 
   searchBox.addEventListener('transitionend', () => {
-    console.log('动画结束')
-    console.log('是否展开', searchBox.classList.contains('expand'))
     if (searchBox.classList.contains('expand')) {
       searchIcon.style.display = 'inline-flex'
       searchIcon.style.background = '#999'
