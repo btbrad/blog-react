@@ -11,6 +11,7 @@ import {
 // import { CSSTransition } from 'react-transition-group'
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
+import { connect } from 'react-redux'
 
 const style = {
   position: 'relative',
@@ -20,12 +21,6 @@ const style = {
 }
 
 class Header extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      focused: false,
-    }
-  }
 
   componentDidMount() {
     bind()
@@ -35,17 +30,16 @@ class Header extends Component {
     this.setState({
       focused: true,
     })
-    console.log(this.state.focused)
   }
 
   handleBlur = () => {
     this.setState({
       focused: false,
     })
-    console.log(this.state.focused)
   }
 
   render() {
+    console.log(this.props.focused)
     return (
       <HeaderWrapper>
         <Logo />
@@ -77,4 +71,12 @@ class Header extends Component {
   }
 }
 
-export default Header
+const mapStateToProps = (state) => ({
+  focused: state.focused
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
