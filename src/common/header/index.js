@@ -12,6 +12,7 @@ import {
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 import { connect } from 'react-redux'
+import { setSearchBlur, setSearchFocus } from './store/actionsCreators'
 
 const style = {
   position: 'relative',
@@ -49,8 +50,8 @@ class Header extends Component {
           <Search
             id='search-box'
             placeholder='搜索'
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}></Search>
+            onFocus={this.props.handleFocus}
+            onBlur={this.props.handleBlur}></Search>
           <span style={style} className='search-icon'>
             <Icon name='search' />
           </span>
@@ -76,7 +77,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+  handleFocus: () => dispatch(setSearchFocus()),
+  handleBlur: () => dispatch(setSearchBlur())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
