@@ -72,7 +72,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  focused: state.focused
+  focused: state.header.focused
 })
 
 const mapDispatchToProps = (dispatch) => ({
