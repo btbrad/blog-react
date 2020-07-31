@@ -7,3 +7,4 @@ const reducer = (state=defaultState, action) => {
 }
 
 export default reducer
+ 
