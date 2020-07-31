@@ -73,7 +73,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  focused: state.header.get('focused')
+  focused: state.getIn(['header','focused'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
