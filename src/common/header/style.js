@@ -76,6 +76,8 @@ export const Button = styled.a`
 `
 export const SearchWrapper = styled.div`
   position: relative;
+  width: 400px;
+  float: left;
 `
 
 export const Search = styled.input`
@@ -101,7 +103,7 @@ export const TrendingWrapper = styled.div`
   height: 240px;
   position: absolute;
   top: 56px;
-  left: 170px;
+  left: 10px;
   box-shadow: 0px 5px 5px #ccc;
   background: #fff;
   padding: 0 auto;
