@@ -19,7 +19,7 @@ import {
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 import { connect } from 'react-redux'
-import { setSearchBlur, setSearchFocus } from './store/actionsCreators'
+import { setSearchBlur, setSearchFocus, getTrendingList } from './store/actionsCreators'
 
 const style = {
   position: 'relative',
@@ -69,7 +69,7 @@ class Header extends Component {
 
   render() {
     console.log(this.props.focused)
-    const { focused, handleFocus, handleBlur  } = this.props
+    const { focused, handleFocus, handleBlur, getList  } = this.props
 
     return (
       <HeaderWrapper>
@@ -81,7 +81,11 @@ class Header extends Component {
             <Search
               id='search-box'
               placeholder='搜索'
-              onFocus={handleFocus}
+              onFocus={() => {
+                  handleFocus()
+                  getList()
+                }
+              }
               onBlur={handleBlur}></Search>
             <span style={style} className='search-icon'>
               <Icon name='search' />
@@ -111,7 +115,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleFocus: () => dispatch(setSearchFocus()),
-  handleBlur: () => dispatch(setSearchBlur())
+  handleBlur: () => dispatch(setSearchBlur()),
+  getList: () => dispatch(getTrendingList())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

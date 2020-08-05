@@ -1,19 +1,22 @@
 import { fromJS } from 'immutable'
-import { SEARCH_FOCUS, SEARCH_BLUR } from './actionTypes'
+import { SEARCH_FOCUS, SEARCH_BLUR, SET_TRENDING_LIST } from './actionTypes'
 
 const defaultState = fromJS({
-  focused: false
+  focused: false,
+  trendingList: []
 })
 
 const reducer = (state=defaultState, action) => {
-  if (action.type === SEARCH_FOCUS) {
-    return state.set('focused', true)
+  switch(action.type) {
+    case SEARCH_FOCUS:
+      return state.set('focused', true)
+    case SEARCH_BLUR:
+      return state.set('focused', false)
+    case SET_TRENDING_LIST:
+      return state.set('trendingList', action.payload.list)
+    default:
+      return state
   }
-  if (action.type === SEARCH_BLUR) {
-    return state.set('focused', false)
-  }
-  return state
 }
 
 export default reducer
- 
