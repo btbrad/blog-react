@@ -28,6 +28,27 @@ const style = {
   height: '22px',
 }
 
+const renderTrending = (show) => {
+  if (show) {
+    return (
+      <TrendingWrapper>
+        <TrendingTitleWrapper>
+          <TrendingTitle>热搜</TrendingTitle>
+          <SwitchButton>换一批</SwitchButton>
+        </TrendingTitleWrapper>
+        <TrendingList>
+          <TrendingItem>算法</TrendingItem>
+          <TrendingItem>算法</TrendingItem>
+          <TrendingItem>算法</TrendingItem>
+          <TrendingItem>算法</TrendingItem>
+          <TrendingItem>算法</TrendingItem>
+          <TrendingItem>算法</TrendingItem>
+        </TrendingList>
+      </TrendingWrapper>
+    )
+  }
+}
+
 class Header extends Component {
 
   componentDidMount() {
@@ -48,6 +69,8 @@ class Header extends Component {
 
   render() {
     console.log(this.props.focused)
+    const { focused, handleFocus, handleBlur  } = this.props
+
     return (
       <HeaderWrapper>
         <Logo />
@@ -58,25 +81,12 @@ class Header extends Component {
             <Search
               id='search-box'
               placeholder='搜索'
-              onFocus={this.props.handleFocus}
-              onBlur={this.props.handleBlur}></Search>
+              onFocus={handleFocus}
+              onBlur={handleBlur}></Search>
             <span style={style} className='search-icon'>
               <Icon name='search' />
             </span>
-            <TrendingWrapper>
-              <TrendingTitleWrapper>
-                <TrendingTitle>热搜</TrendingTitle>
-                <SwitchButton>换一批</SwitchButton>
-              </TrendingTitleWrapper>
-              <TrendingList>
-                <TrendingItem>算法</TrendingItem>
-                <TrendingItem>算法</TrendingItem>
-                <TrendingItem>算法</TrendingItem>
-                <TrendingItem>算法</TrendingItem>
-                <TrendingItem>算法</TrendingItem>
-                <TrendingItem>算法</TrendingItem>
-              </TrendingList>
-            </TrendingWrapper>
+            { renderTrending(focused) }
           </SearchWrapper>
           <NavItem className='right'>
             <Icon name='Aa' />
