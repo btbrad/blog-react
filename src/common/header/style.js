@@ -74,6 +74,9 @@ export const Button = styled.a`
     color: #fff;
   }
 `
+export const SearchWrapper = styled.div`
+  position: relative;
+`
 
 export const Search = styled.input`
   width: 240px;
@@ -91,4 +94,56 @@ export const Search = styled.input`
   &:focus {
     width: 320px;
   }
+`
+
+export const TrendingWrapper = styled.div`
+  width: 300px;
+  height: 240px;
+  position: absolute;
+  top: 56px;
+  left: 170px;
+  box-shadow: 0px 5px 5px #ccc;
+  background: #fff;
+  padding: 0 auto;
+` 
+
+export const TrendingTitleWrapper = styled.div`
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+`
+
+export const TrendingTitle = styled.div`
+  width: 50px;
+  height: 30px;
+  float: left;
+`
+
+export const SwitchButton = styled.div`
+  width: 60px;
+  height: 30px;
+  float: right;
+`
+
+export const TrendingList = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 0 20px;
+`
+
+export const TrendingItem = styled.div`
+  height: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+  padding: 0 5px;
+  cursor: pointer;
 `

@@ -7,6 +7,13 @@ import {
   Addition,
   Button,
   Search,
+  SearchWrapper,
+  TrendingWrapper,
+  TrendingTitleWrapper,
+  TrendingTitle,
+  SwitchButton,
+  TrendingList,
+  TrendingItem
 } from './style'
 // import { CSSTransition } from 'react-transition-group'
 import Icon from '../../components/SvgIcon'
@@ -47,14 +54,30 @@ class Header extends Component {
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
-          <Search
-            id='search-box'
-            placeholder='搜索'
-            onFocus={this.props.handleFocus}
-            onBlur={this.props.handleBlur}></Search>
-          <span style={style} className='search-icon'>
-            <Icon name='search' />
-          </span>
+          <SearchWrapper>
+            <Search
+              id='search-box'
+              placeholder='搜索'
+              onFocus={this.props.handleFocus}
+              onBlur={this.props.handleBlur}></Search>
+            <span style={style} className='search-icon'>
+              <Icon name='search' />
+            </span>
+            <TrendingWrapper>
+              <TrendingTitleWrapper>
+                <TrendingTitle>热搜</TrendingTitle>
+                <SwitchButton>换一批</SwitchButton>
+              </TrendingTitleWrapper>
+              <TrendingList>
+                <TrendingItem>算法</TrendingItem>
+                <TrendingItem>算法</TrendingItem>
+                <TrendingItem>算法</TrendingItem>
+                <TrendingItem>算法</TrendingItem>
+                <TrendingItem>算法</TrendingItem>
+                <TrendingItem>算法</TrendingItem>
+              </TrendingList>
+            </TrendingWrapper>
+          </SearchWrapper>
           <NavItem className='right'>
             <Icon name='Aa' />
           </NavItem>
