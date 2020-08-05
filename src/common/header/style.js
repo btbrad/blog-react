@@ -142,6 +142,7 @@ export const TrendingItem = styled.div`
   text-align: center;
   float: left;
   margin-right: 10px;
+  margin-bottom: 5px;
   border-radius: 5px;
   font-size: 12px;
   line-height: 20px;

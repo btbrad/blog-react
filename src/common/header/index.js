@@ -28,27 +28,6 @@ const style = {
   height: '22px',
 }
 
-const renderTrending = (show) => {
-  if (show) {
-    return (
-      <TrendingWrapper>
-        <TrendingTitleWrapper>
-          <TrendingTitle>热搜</TrendingTitle>
-          <SwitchButton>换一批</SwitchButton>
-        </TrendingTitleWrapper>
-        <TrendingList>
-          <TrendingItem>算法</TrendingItem>
-          <TrendingItem>算法</TrendingItem>
-          <TrendingItem>算法</TrendingItem>
-          <TrendingItem>算法</TrendingItem>
-          <TrendingItem>算法</TrendingItem>
-          <TrendingItem>算法</TrendingItem>
-        </TrendingList>
-      </TrendingWrapper>
-    )
-  }
-}
-
 class Header extends Component {
 
   componentDidMount() {
@@ -67,9 +46,25 @@ class Header extends Component {
     })
   }
 
+  renderTrending = (show, list) => {
+    if (show) {
+      return (
+        <TrendingWrapper>
+          <TrendingTitleWrapper>
+            <TrendingTitle>热搜</TrendingTitle>
+            <SwitchButton>换一批</SwitchButton>
+          </TrendingTitleWrapper>
+          <TrendingList>
+            {list.map(item => <TrendingItem key={item}>{item}</TrendingItem>)}
+          </TrendingList>
+        </TrendingWrapper>
+      )
+    }
+  }
+
   render() {
     console.log(this.props.focused)
-    const { focused, handleFocus, handleBlur, getList  } = this.props
+    const { focused, handleFocus, handleBlur, getList, trendingList } = this.props
 
     return (
       <HeaderWrapper>
@@ -90,7 +85,7 @@ class Header extends Component {
             <span style={style} className='search-icon'>
               <Icon name='search' />
             </span>
-            { renderTrending(focused) }
+            { this.renderTrending(focused, trendingList) }
           </SearchWrapper>
           <NavItem className='right'>
             <Icon name='Aa' />
@@ -110,7 +105,8 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  focused: state.getIn(['header','focused'])
+  focused: state.getIn(['header','focused']),
+  trendingList: state.getIn(['header', 'trendingList'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
