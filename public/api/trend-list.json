@@ -16,6 +16,16 @@
     "Ruby",
     "JavaScript",
     "Node.js",
-    "Deno"
+    "C",
+    "C++",
+    "C#",
+    "TypeScript",
+    "Swift",
+    "Objective-C",
+    "Rust",
+    "Scala",
+    "Shell",
+    "Perl",
+    "Kotlin"
   ]
 }

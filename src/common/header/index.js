@@ -19,7 +19,7 @@ import {
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 import { connect } from 'react-redux'
-import { setSearchBlur, setSearchFocus, getTrendingList } from './store/actionsCreators'
+import { setSearchBlur, setSearchFocus, getTrendingList, setTrendingMouseStatus } from './store/actionsCreators'
 
 const style = {
   position: 'relative',
@@ -47,9 +47,13 @@ class Header extends Component {
   }
 
   renderTrending = (show, list) => {
-    if (show) {
+    const { mouseIn, handleMouseEnter, handleMouseLeave} = this.props
+    if (show || mouseIn) {
       return (
-        <TrendingWrapper>
+        <TrendingWrapper 
+          onMouseEnter={() => {handleMouseEnter()}} 
+          onMouseLeave={() => {handleMouseLeave()}} 
+        >
           <TrendingTitleWrapper>
             <TrendingTitle>热搜</TrendingTitle>
             <SwitchButton>换一批</SwitchButton>
@@ -106,13 +110,16 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   focused: state.getIn(['header','focused']),
-  trendingList: state.getIn(['header', 'trendingList'])
+  trendingList: state.getIn(['header', 'trendingList']),
+  mouseIn: state.getIn(['header', 'mouseIn'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
   handleFocus: () => dispatch(setSearchFocus()),
   handleBlur: () => dispatch(setSearchBlur()),
-  getList: () => dispatch(getTrendingList())
+  getList: () => dispatch(getTrendingList()),
+  handleMouseEnter: () => dispatch(setTrendingMouseStatus(true)),
+  handleMouseLeave: () => dispatch(setTrendingMouseStatus(false))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
