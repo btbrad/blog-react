@@ -1,3 +1,21 @@
 {
-  "list": [ "Vue", "React", "Angular", "JQuery", "HTML", "CSS", "Less", "Sass", "Webpack" ]
+  "list": [ 
+    "Vue", 
+    "React", 
+    "Angular", 
+    "JQuery", 
+    "HTML", 
+    "CSS", 
+    "Less", 
+    "Sass", 
+    "Webpack", 
+    "Java", 
+    "Golang", 
+    "PHP", 
+    "Python",
+    "Ruby",
+    "JavaScript",
+    "Node.js",
+    "Deno"
+  ]
 }

@@ -131,7 +131,7 @@ export const SwitchButton = styled.div`
 `
 
 export const TrendingList = styled.div`
-  width: 100%;
+  width: 85%;
   height: auto;
   padding: 0 20px;
 `
