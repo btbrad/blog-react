@@ -48,7 +48,12 @@ class Header extends Component {
   }
 
   handleSwitch = (icon) => {
-    console.log(icon)
+    let originAngle = +icon.style.transform.replace(/[^0-9]/ig, '')
+    if (!originAngle) {
+      originAngle = 0
+    }
+    icon.style.transform = `rotate(${ originAngle + 360 }deg)`
+    
     const { currentPage, total, setCurrentPage } = this.props
     let page = 0
     if (currentPage < Math.ceil(total/10)) {

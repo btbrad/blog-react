@@ -125,9 +125,10 @@ export const TrendingTitle = styled.div`
 `
 
 export const SwitchButton = styled.div`
-  width: 60px;
+  width: 100px;
   height: 30px;
   float: right;
+  cursor: pointer;
 `
 
 export const TrendingList = styled.div`
@@ -152,9 +153,11 @@ export const TrendingItem = styled.div`
 `
 
 export const SwitchIcon = styled.span`
-  width: 30px;
-  height: 30px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
   font-size: 12px;
   padding: 2px;
   transition: all .5s;
+  transform-origin: 50%; 
 `
