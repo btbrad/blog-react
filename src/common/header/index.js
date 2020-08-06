@@ -20,7 +20,7 @@ import {
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 import { connect } from 'react-redux'
-import { setSearchBlur, setSearchFocus, getTrendingList, setTrendingMouseStatus } from './store/actionsCreators'
+import { setSearchBlur, setSearchFocus, getTrendingList, setTrendingMouseStatus, setCurrentPage } from './store/actionsCreators'
 
 const style = {
   position: 'relative',
@@ -47,18 +47,29 @@ class Header extends Component {
     })
   }
 
+  handleSwitch = (icon) => {
+    console.log(icon)
+    const { currentPage, total, setCurrentPage } = this.props
+    let page = 0
+    if (currentPage < Math.ceil(total/10)) {
+      page = currentPage + 1
+    } else {
+      page = 1
+    }
+    setCurrentPage(page)
+  }
+
   renderTrending = (show, list) => {
     list = list.toJS()
     const { mouseIn, handleMouseEnter, handleMouseLeave, currentPage, total} = this.props
     let currentList = []
     for(let i = (currentPage - 1 ) * 10; i < total; i++ ) {
-      if (currentList.length <= 10 ) {
+      if (currentList.length <= 9 ) {
         currentList.push(list[i])
       } else {
         break
       }
     }
-    console.log(currentList)
     if (show || mouseIn) {
       return (
         <TrendingWrapper 
@@ -67,9 +78,9 @@ class Header extends Component {
         >
           <TrendingTitleWrapper>
             <TrendingTitle>热搜</TrendingTitle>
-            <SwitchButton>
-              <SwitchIcon>
-                <Icon name='switch' />
+            <SwitchButton onClick={() => {this.handleSwitch(this.switchIcon)}}>
+              <SwitchIcon ref={icon => this.switchIcon = icon}>
+                <Icon name="switch" />
               </SwitchIcon>
               换一批
             </SwitchButton>
@@ -83,7 +94,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.focused)
     const { focused, handleFocus, handleBlur, getList, trendingList } = this.props
 
     return (
@@ -138,6 +148,7 @@ const mapDispatchToProps = (dispatch) => ({
   getList: () => dispatch(getTrendingList()),
   handleMouseEnter: () => dispatch(setTrendingMouseStatus(true)),
   handleMouseLeave: () => dispatch(setTrendingMouseStatus(false)),
+  setCurrentPage: (page) => dispatch(setCurrentPage({currentPage: page}))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

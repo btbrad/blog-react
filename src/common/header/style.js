@@ -153,7 +153,8 @@ export const TrendingItem = styled.div`
 
 export const SwitchIcon = styled.span`
   width: 30px;
-  height: 20px;
+  height: 30px;
   font-size: 12px;
   padding: 2px;
+  transition: all .5s;
 `
