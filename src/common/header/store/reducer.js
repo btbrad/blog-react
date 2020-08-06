@@ -4,7 +4,7 @@ import { SEARCH_FOCUS, SEARCH_BLUR, SET_TRENDING_LIST, SET_MOUSE_STATUS } from '
 const defaultState = fromJS({
   focused: false,
   trendingList: [],
-  mouseIn: false
+  mouseIn: true
 })
 
 const reducer = (state=defaultState, action) => {

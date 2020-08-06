@@ -150,3 +150,10 @@ export const TrendingItem = styled.div`
   padding: 0 5px;
   cursor: pointer;
 `
+
+export const SwitchIcon = styled.span`
+  width: 30px;
+  height: 20px;
+  font-size: 12px;
+  padding: 2px;
+`

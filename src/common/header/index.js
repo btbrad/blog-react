@@ -13,7 +13,8 @@ import {
   TrendingTitle,
   SwitchButton,
   TrendingList,
-  TrendingItem
+  TrendingItem,
+  SwitchIcon
 } from './style'
 // import { CSSTransition } from 'react-transition-group'
 import Icon from '../../components/SvgIcon'
@@ -56,7 +57,12 @@ class Header extends Component {
         >
           <TrendingTitleWrapper>
             <TrendingTitle>热搜</TrendingTitle>
-            <SwitchButton>换一批</SwitchButton>
+            <SwitchButton>
+              <SwitchIcon>
+                <Icon name='switch' />
+              </SwitchIcon>
+              换一批
+            </SwitchButton>
           </TrendingTitleWrapper>
           <TrendingList>
             {list.map(item => <TrendingItem key={item}>{item}</TrendingItem>)}
