@@ -48,7 +48,17 @@ class Header extends Component {
   }
 
   renderTrending = (show, list) => {
-    const { mouseIn, handleMouseEnter, handleMouseLeave} = this.props
+    list = list.toJS()
+    const { mouseIn, handleMouseEnter, handleMouseLeave, currentPage, total} = this.props
+    let currentList = []
+    for(let i = (currentPage - 1 ) * 10; i < total; i++ ) {
+      if (currentList.length <= 10 ) {
+        currentList.push(list[i])
+      } else {
+        break
+      }
+    }
+    console.log(currentList)
     if (show || mouseIn) {
       return (
         <TrendingWrapper 
@@ -65,7 +75,7 @@ class Header extends Component {
             </SwitchButton>
           </TrendingTitleWrapper>
           <TrendingList>
-            {list.map(item => <TrendingItem key={item}>{item}</TrendingItem>)}
+            {currentList.map(item => <TrendingItem key={item}>{item}</TrendingItem>)}
           </TrendingList>
         </TrendingWrapper>
       )
@@ -117,7 +127,9 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   focused: state.getIn(['header','focused']),
   trendingList: state.getIn(['header', 'trendingList']),
-  mouseIn: state.getIn(['header', 'mouseIn'])
+  mouseIn: state.getIn(['header', 'mouseIn']),
+  currentPage: state.getIn(['header', 'currentPage']),
+  total: state.getIn(['header', 'total'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -125,7 +137,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleBlur: () => dispatch(setSearchBlur()),
   getList: () => dispatch(getTrendingList()),
   handleMouseEnter: () => dispatch(setTrendingMouseStatus(true)),
-  handleMouseLeave: () => dispatch(setTrendingMouseStatus(false))
+  handleMouseLeave: () => dispatch(setTrendingMouseStatus(false)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
