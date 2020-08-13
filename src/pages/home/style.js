@@ -24,6 +24,7 @@ export const ArticleList = styled.div`
 export const ArticleItem = styled.div`
   width: 100%;
   height: 200px;
+  border-bottom: 1px solid #ccc;
 `
 
 export const ArticleTitle = styled.p`

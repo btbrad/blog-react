@@ -1,0 +1,1 @@
+export const SET_ARTICLE_LIST = 'home/set-article-list'
