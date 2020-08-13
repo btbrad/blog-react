@@ -113,7 +113,7 @@ class Header extends Component {
               placeholder='搜索'
               onFocus={() => {
                   handleFocus()
-                  getList()
+                  trendingList.size === 0 && getList()
                 }
               }
               onBlur={handleBlur}></Search>
