@@ -12,6 +12,7 @@ export default ({ data }) => (
         <Icon name="star" />
         {data.star}
       </span>
+      <span>{data.category}</span>
       <span>
         <Icon name="comment" />
         {data.comment}

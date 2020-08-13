@@ -58,7 +58,12 @@ export const ArticleBottom = styled.div`
   height: 50px;
   color: #999;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   fon-size: 12px;
   line-height: 40px;
+  span {
+    font-size: 12px;
+    display: inline-block;
+    min-width: 70px;
+  }
 `
