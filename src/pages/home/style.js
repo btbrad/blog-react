@@ -8,11 +8,13 @@ export const HomeWrapper = styled.div`
 export const HomeLeft = styled.div`
   width: 640px;
   height: auto;
+  float: left;
 ` 
 
 export const HomeRight = styled.div`
   width: 280px;
   height: auto;
+  float: left;
 `
 
 export const ArticleList = styled.div`
@@ -66,4 +68,75 @@ export const ArticleBottom = styled.div`
     display: inline-block;
     min-width: 70px;
   }
+`
+
+export const RecommendWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  margin-top: 70px;
+  margin-left: 40px;
+`
+
+export const RecommendTop = styled.div`
+  width: 100%;
+  height: 50px;
+  color: #969696;
+  font-size: 14px;
+`
+
+export const RecommendTitle = styled.div`
+  width: 100px;
+  height: 50px;
+  float: left;
+`
+export const RecommendSwitch = styled.div`
+  width: 100px;
+  height: 50px;
+  float: right;
+`
+
+export const RecommendList = styled.div`
+  width: 100%;
+  height: 300px;
+`
+
+export const RecommendItem = styled.div`
+  width: 100%;
+  height: 60px;
+  margin: 5px auto;
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    float: left;
+  }
+`
+
+export const Author = styled.div`
+  width: 150px;
+  height: 100%;
+  float: left;
+  font-size: 12px;
+  line-height: 30px;
+  margin-left: 2px;
+`
+
+export const AuthorDetail = styled.div`
+  width: 150px;
+  height: 25px;
+`
+
+export const AuthorName = styled.p`
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+`
+
+export const SubButton = styled.div`
+  float: right;
+  width: 50px;
+  height: 40px;
+  color: green;
+  cursor: pointer;
+  margin-right: 30px;
 `
