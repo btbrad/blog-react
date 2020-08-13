@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
+import { HomeWrapper, HomeLeft, HomeRight, ArticleList } from './style'
+import ArticleItem from './components/ArticleItem'
 
 class Home extends Component {
   render() {
     return (
-      <h2>Home</h2>
+      <HomeWrapper>
+        <HomeLeft>
+          <ArticleList>
+             <ArticleItem></ArticleItem>
+          </ArticleList>
+        </HomeLeft>
+        <HomeRight></HomeRight>
+      </HomeWrapper>
     )
   }
 }
