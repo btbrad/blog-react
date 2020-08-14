@@ -16,7 +16,14 @@ export default class BackTop extends Component {
   }
 
   backTop = () => {
-    window.scrollTo(0, 0)
+    let timer = setInterval(() => {
+      let top = document.documentElement.scrollTop || document.body.scrollTop
+      let speed = top / 5
+      document.documentElement.scrollTop -= speed
+      if (top <= 0) {
+        clearInterval(timer)
+      }
+    }, 30);
   }
 
   bindEvent = () => {
