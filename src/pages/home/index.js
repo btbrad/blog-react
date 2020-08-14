@@ -9,6 +9,7 @@ import {
   RecommendList,
   RecommendTitle,
   RecommendSwitch,
+  LoadMore
 } from './style'
 import ArticleItem from './components/ArticleItem'
 import RecommendItem from './components/RecommendItem'
@@ -23,16 +24,17 @@ class Home extends Component {
   }
 
   render() {
-    const { articleList, recommendList } = this.props
+    const { articleList, recommendList, currentPage } = this.props
 
     return (
       <HomeWrapper>
         <HomeLeft>
           <ArticleList>
-            {articleList.toJS().map((item) => (
-              <ArticleItem data={item} key={item.id}></ArticleItem>
+            {articleList.toJS().map((item, index) => (
+              <ArticleItem data={item} key={index}></ArticleItem>
             ))}
           </ArticleList>
+          <LoadMore onClick={() => this.props.handleLoadMore(currentPage)}>加载更多</LoadMore>
         </HomeLeft>
         <HomeRight>
           <RecommendWrapper>
@@ -58,11 +60,13 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
   articleList: state.getIn(['home', 'articleList']),
   recommendList: state.getIn(['home', 'recommendList']),
+  currentPage: state.getIn(['home', 'currentPage'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getList: () => dispatch(getArticleList()),
+  getList: () => dispatch(getArticleList(1)),
   getRecoList: () => dispatch(getRecommendList()),
+  handleLoadMore: (page) => dispatch(getArticleList(page + 1))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

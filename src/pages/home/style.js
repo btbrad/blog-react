@@ -33,6 +33,7 @@ export const ArticleItem = styled.div`
     width: 148px;
     height: 98px;
     float: right;
+    cursor: pointer;
   }
 `
 
@@ -67,6 +68,7 @@ export const ArticleBottom = styled.div`
     font-size: 12px;
     display: inline-block;
     min-width: 70px;
+    cursor: pointer;
   }
 `
 
@@ -139,4 +141,15 @@ export const SubButton = styled.div`
   color: green;
   cursor: pointer;
   margin-right: 30px;
+`
+
+export const LoadMore = styled.div`
+  width: 200px;
+  height: 30px;
+  border-radius: 20px;
+  background: #ccc;
+  text-align: center;
+  line-height: 30px;
+  margin: 10px auto;
+  cursor: pointer;
 `
