@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   HomeWrapper,
   HomeLeft,
@@ -9,7 +9,7 @@ import {
   RecommendList,
   RecommendTitle,
   RecommendSwitch,
-  LoadMore
+  LoadMore,
 } from './style'
 import ArticleItem from './components/ArticleItem'
 import RecommendItem from './components/RecommendItem'
@@ -17,7 +17,7 @@ import { connect } from 'react-redux'
 import { getArticleList, getRecommendList } from './store/actionCreators'
 import Icon from '../../components/SvgIcon'
 
-class Home extends Component {
+class Home extends PureComponent {
   componentDidMount() {
     this.props.getList()
     this.props.getRecoList()
@@ -34,7 +34,9 @@ class Home extends Component {
               <ArticleItem data={item} key={index}></ArticleItem>
             ))}
           </ArticleList>
-          <LoadMore onClick={() => this.props.handleLoadMore(currentPage)}>加载更多</LoadMore>
+          <LoadMore onClick={() => this.props.handleLoadMore(currentPage)}>
+            加载更多
+          </LoadMore>
         </HomeLeft>
         <HomeRight>
           <RecommendWrapper>
@@ -60,13 +62,13 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
   articleList: state.getIn(['home', 'articleList']),
   recommendList: state.getIn(['home', 'recommendList']),
-  currentPage: state.getIn(['home', 'currentPage'])
+  currentPage: state.getIn(['home', 'currentPage']),
 })
 
 const mapDispatchToProps = (dispatch) => ({
   getList: () => dispatch(getArticleList(1)),
   getRecoList: () => dispatch(getRecommendList()),
-  handleLoadMore: (page) => dispatch(getArticleList(page + 1))
+  handleLoadMore: (page) => dispatch(getArticleList(page + 1)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

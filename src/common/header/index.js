@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   HeaderWrapper,
   Logo,
@@ -14,13 +14,19 @@ import {
   SwitchButton,
   TrendingList,
   TrendingItem,
-  SwitchIcon
+  SwitchIcon,
 } from './style'
 // import { CSSTransition } from 'react-transition-group'
 import Icon from '../../components/SvgIcon'
 import bind from './transition'
 import { connect } from 'react-redux'
-import { setSearchBlur, setSearchFocus, getTrendingList, setTrendingMouseStatus, setCurrentPage } from './store/actionsCreators'
+import {
+  setSearchBlur,
+  setSearchFocus,
+  getTrendingList,
+  setTrendingMouseStatus,
+  setCurrentPage,
+} from './store/actionsCreators'
 
 const style = {
   position: 'relative',
@@ -29,8 +35,7 @@ const style = {
   height: '22px',
 }
 
-class Header extends Component {
-
+class Header extends PureComponent {
   componentDidMount() {
     bind()
   }
@@ -48,15 +53,15 @@ class Header extends Component {
   }
 
   handleSwitch = (icon) => {
-    let originAngle = +icon.style.transform.replace(/[^0-9]/ig, '')
+    let originAngle = +icon.style.transform.replace(/[^0-9]/gi, '')
     if (!originAngle) {
       originAngle = 0
     }
-    icon.style.transform = `rotate(${ originAngle + 360 }deg)`
-    
+    icon.style.transform = `rotate(${originAngle + 360}deg)`
+
     const { currentPage, total, setCurrentPage } = this.props
     let page = 0
-    if (currentPage < Math.ceil(total/10)) {
+    if (currentPage < Math.ceil(total / 10)) {
       page = currentPage + 1
     } else {
       page = 1
@@ -66,10 +71,16 @@ class Header extends Component {
 
   renderTrending = (show, list) => {
     list = list.toJS()
-    const { mouseIn, handleMouseEnter, handleMouseLeave, currentPage, total} = this.props
+    const {
+      mouseIn,
+      handleMouseEnter,
+      handleMouseLeave,
+      currentPage,
+      total,
+    } = this.props
     let currentList = []
-    for(let i = (currentPage - 1 ) * 10; i < total; i++ ) {
-      if (currentList.length <= 9 ) {
+    for (let i = (currentPage - 1) * 10; i < total; i++) {
+      if (currentList.length <= 9) {
         currentList.push(list[i])
       } else {
         break
@@ -77,21 +88,29 @@ class Header extends Component {
     }
     if (show || mouseIn) {
       return (
-        <TrendingWrapper 
-          onMouseEnter={() => {handleMouseEnter()}} 
-          onMouseLeave={() => {handleMouseLeave()}} 
-        >
+        <TrendingWrapper
+          onMouseEnter={() => {
+            handleMouseEnter()
+          }}
+          onMouseLeave={() => {
+            handleMouseLeave()
+          }}>
           <TrendingTitleWrapper>
             <TrendingTitle>热搜</TrendingTitle>
-            <SwitchButton onClick={() => {this.handleSwitch(this.switchIcon)}}>
-              <SwitchIcon ref={icon => this.switchIcon = icon}>
-                <Icon name="switch" />
+            <SwitchButton
+              onClick={() => {
+                this.handleSwitch(this.switchIcon)
+              }}>
+              <SwitchIcon ref={(icon) => (this.switchIcon = icon)}>
+                <Icon name='switch' />
               </SwitchIcon>
               换一批
             </SwitchButton>
           </TrendingTitleWrapper>
           <TrendingList>
-            {currentList.map(item => <TrendingItem key={item}>{item}</TrendingItem>)}
+            {currentList.map((item) => (
+              <TrendingItem key={item}>{item}</TrendingItem>
+            ))}
           </TrendingList>
         </TrendingWrapper>
       )
@@ -99,7 +118,13 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleFocus, handleBlur, getList, trendingList } = this.props
+    const {
+      focused,
+      handleFocus,
+      handleBlur,
+      getList,
+      trendingList,
+    } = this.props
 
     return (
       <HeaderWrapper>
@@ -112,15 +137,14 @@ class Header extends Component {
               id='search-box'
               placeholder='搜索'
               onFocus={() => {
-                  handleFocus()
-                  trendingList.size === 0 && getList()
-                }
-              }
+                handleFocus()
+                trendingList.size === 0 && getList()
+              }}
               onBlur={handleBlur}></Search>
             <span style={style} className='search-icon'>
               <Icon name='search' />
             </span>
-            { this.renderTrending(focused, trendingList) }
+            {this.renderTrending(focused, trendingList)}
           </SearchWrapper>
           <NavItem className='right'>
             <Icon name='Aa' />
@@ -140,11 +164,11 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  focused: state.getIn(['header','focused']),
+  focused: state.getIn(['header', 'focused']),
   trendingList: state.getIn(['header', 'trendingList']),
   mouseIn: state.getIn(['header', 'mouseIn']),
   currentPage: state.getIn(['header', 'currentPage']),
-  total: state.getIn(['header', 'total'])
+  total: state.getIn(['header', 'total']),
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -153,7 +177,7 @@ const mapDispatchToProps = (dispatch) => ({
   getList: () => dispatch(getTrendingList()),
   handleMouseEnter: () => dispatch(setTrendingMouseStatus(true)),
   handleMouseLeave: () => dispatch(setTrendingMouseStatus(false)),
-  setCurrentPage: (page) => dispatch(setCurrentPage({currentPage: page}))
+  setCurrentPage: (page) => dispatch(setCurrentPage({ currentPage: page })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
