@@ -9,7 +9,7 @@ export const HomeLeft = styled.div`
   width: 640px;
   height: auto;
   float: left;
-` 
+`
 
 export const HomeRight = styled.div`
   width: 280px;

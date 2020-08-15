@@ -13,10 +13,10 @@ function App() {
     <Provider store={store}>
       <div className='app'>
         <GlobalStyle />
-        <Header />
         <BrowserRouter>
-          <Route path="/" exact component={ Home }></Route>
-          <Route path="/detail" exact component={ Detail }></Route>
+          <Header />
+          <Route path='/' exact component={Home}></Route>
+          <Route path='/detail' exact component={Detail}></Route>
         </BrowserRouter>
         <BackTop />
       </div>

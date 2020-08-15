@@ -8,9 +8,7 @@ export const HeaderWrapper = styled.div`
   position: relative;
 `
 
-export const Logo = styled.a.attrs({
-  href: '/',
-})`
+export const Logo = styled.div`
   display: block;
   width: 100px;
   height: 56px;
@@ -107,7 +105,7 @@ export const TrendingWrapper = styled.div`
   box-shadow: 0px 5px 5px #ccc;
   background: #fff;
   padding: 0 auto;
-` 
+`
 
 export const TrendingTitleWrapper = styled.div`
   width: 100%;
@@ -158,6 +156,6 @@ export const SwitchIcon = styled.span`
   height: 12px;
   font-size: 12px;
   padding: 2px;
-  transition: all .5s;
-  transform-origin: 50%; 
+  transition: all 0.5s;
+  transform-origin: 50%;
 `
