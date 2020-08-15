@@ -18,4 +18,7 @@ export const Title = styled.h2`
 export const Content = styled.div`
   width: 100%;
   height: auto;
+  p {
+    margin-bottom: 40px;
+  }
 `
