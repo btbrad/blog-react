@@ -9,7 +9,9 @@ import Icon from '../../../../components/SvgIcon'
 import { Link } from 'react-router-dom'
 
 export default ({ data }) => (
-  <Link style={{ textDecoration: 'none', color: 'inherit' }} to={`/detail`}>
+  <Link
+    style={{ textDecoration: 'none', color: 'inherit' }}
+    to={`/detail/${data.id}`}>
     <ArticleItem>
       <img className='article-img' src={data.imgUrl} alt='' />
       <ArticleTitle>{data.title}</ArticleTitle>
