@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Header from './common/header/index'
 import Home from './pages/home'
 import Detail from './pages/detail'
+import Login from './pages/login'
 import BackTop from './components/backToTop/index.js'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Route path='/' exact component={Home}></Route>
           <Route path='/detail/:id' exact component={Detail}></Route>
+          <Route path='/login' exact component={Login}></Route>
         </BrowserRouter>
         <BackTop />
       </div>

@@ -105,6 +105,7 @@ export const TrendingWrapper = styled.div`
   box-shadow: 0px 5px 5px #ccc;
   background: #fff;
   padding: 0 auto;
+  z-index: 100;
 `
 
 export const TrendingTitleWrapper = styled.div`
