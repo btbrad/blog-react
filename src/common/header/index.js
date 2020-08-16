@@ -28,6 +28,7 @@ import {
   setCurrentPage,
 } from './store/actionsCreators'
 import { Link } from 'react-router-dom'
+import { logout } from '../../pages/login/store/actionCreators'
 
 const style = {
   position: 'relative',
@@ -125,6 +126,8 @@ class Header extends PureComponent {
       handleBlur,
       getList,
       trendingList,
+      loginStatus,
+      handleLogout,
     } = this.props
 
     return (
@@ -152,7 +155,18 @@ class Header extends PureComponent {
           <NavItem className='right'>
             <Icon name='Aa' />
           </NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {loginStatus ? (
+            <NavItem
+              className='right'
+              onClick={handleLogout}
+              style={{ cursor: 'pointer' }}>
+              退出
+            </NavItem>
+          ) : (
+            <Link to='/login'>
+              <NavItem className='right'>登录</NavItem>
+            </Link>
+          )}
         </Nav>
         <Addition>
           <Button className='reg'>注册</Button>
@@ -172,6 +186,7 @@ const mapStateToProps = (state) => ({
   mouseIn: state.getIn(['header', 'mouseIn']),
   currentPage: state.getIn(['header', 'currentPage']),
   total: state.getIn(['header', 'total']),
+  loginStatus: state.getIn(['login', 'loginStatus']),
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -181,6 +196,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleMouseEnter: () => dispatch(setTrendingMouseStatus(true)),
   handleMouseLeave: () => dispatch(setTrendingMouseStatus(false)),
   setCurrentPage: (page) => dispatch(setCurrentPage({ currentPage: page })),
+  handleLogout: () => dispatch(logout()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
